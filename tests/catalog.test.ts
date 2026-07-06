@@ -2,8 +2,8 @@ import { describe, expect, it } from "vitest";
 import { getCategories, getTool, getTools } from "../src/registry.js";
 
 describe("catalog", () => {
-  it("covers 14 public tools", () => {
-    expect(getTools()).toHaveLength(14);
+  it("covers 15 public tools", () => {
+    expect(getTools()).toHaveLength(15);
   });
 
   it("has business categories", () => {
@@ -19,5 +19,9 @@ describe("catalog", () => {
 
   it("contains tag search", () => {
     expect(getTool("search_tags")?.group).toBe("tag");
+  });
+
+  it("contains company resolver", () => {
+    expect(getTool("resolve_companies")?.group).toBe("company");
   });
 });
