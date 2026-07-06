@@ -1,0 +1,18 @@
+[
+  {
+    "question": "查询具身智能标签下的中国公司",
+    "tool": "search_tags",
+    "arguments": {
+      "keyword": "具身智能",
+      "limit": 10
+    }
+  },
+  {
+    "question": "查询具身智能企业对外投资案例",
+    "tool": "search_company_investment_cases",
+    "arguments": {
+      "investor_tag_ids": [14956],
+      "page_size": 20
+    }
+  }
+]

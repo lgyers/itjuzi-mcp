@@ -1,0 +1,235 @@
+{
+  "categories": [
+    {
+      "group": "company",
+      "name_zh": "公司",
+      "description": "公司搜索、公司画像、融资历史和企业对外投资",
+      "tool_count": 5
+    },
+    {
+      "group": "funding",
+      "name_zh": "融资",
+      "description": "融资事件、融资排名和赛道融资统计",
+      "tool_count": 3
+    },
+    {
+      "group": "investor",
+      "name_zh": "机构",
+      "description": "投资机构搜索、机构画像和机构投资案例",
+      "tool_count": 3
+    },
+    {
+      "group": "fa",
+      "name_zh": "FA",
+      "description": "结构化 FA 服务案例",
+      "tool_count": 1
+    },
+    {
+      "group": "lookup",
+      "name_zh": "字典",
+      "description": "行业、轮次、地区、机构类型和公司资质字典",
+      "tool_count": 1
+    },
+    {
+      "group": "tag",
+      "name_zh": "标签",
+      "description": "搜索赛道标签并获取标签 ID",
+      "tool_count": 1
+    }
+  ],
+  "tools": [
+    {
+      "name": "search_companies",
+      "group": "company",
+      "cliMethod": "search",
+      "description": "查询公司列表，支持标签、行业、地区、融资阶段、千里马、独角兽和公司资质筛选。",
+      "params": [
+        {"name": "tag_ids", "type": "array", "description": "标签 ID 列表，例如 14956", "required": false},
+        {"name": "tag_match_mode", "type": "string", "description": "标签匹配方式：union 或 intersection", "required": false},
+        {"name": "location", "type": "string", "description": "地区类型：in 中国公司，out 海外公司", "required": false},
+        {"name": "scope_ids", "type": "array", "description": "一级行业 ID 列表", "required": false},
+        {"name": "sub_scope_ids", "type": "array", "description": "二级行业 ID 列表", "required": false},
+        {"name": "provinces", "type": "array", "description": "省份列表", "required": false},
+        {"name": "cities", "type": "array", "description": "城市列表", "required": false},
+        {"name": "page_size", "type": "number", "description": "分页大小", "required": false},
+        {"name": "cursor", "type": "string", "description": "上一页 next_cursor", "required": false}
+      ],
+      "examples": ["itjuzi-mcp company search --tag_ids 14956 --location in --page_size 20"]
+    },
+    {
+      "name": "count_companies",
+      "group": "company",
+      "cliMethod": "count",
+      "description": "按公司筛选条件统计对外可见公司数量。",
+      "params": [
+        {"name": "tag_ids", "type": "array", "description": "标签 ID 列表", "required": false},
+        {"name": "location", "type": "string", "description": "地区类型：in 中国公司，out 海外公司", "required": false},
+        {"name": "scope_ids", "type": "array", "description": "一级行业 ID 列表", "required": false},
+        {"name": "sub_scope_ids", "type": "array", "description": "二级行业 ID 列表", "required": false},
+        {"name": "provinces", "type": "array", "description": "省份列表", "required": false},
+        {"name": "cities", "type": "array", "description": "城市列表", "required": false}
+      ],
+      "examples": ["itjuzi-mcp company count --tag_ids 14956 --location in"]
+    },
+    {
+      "name": "get_company_profile",
+      "group": "company",
+      "cliMethod": "profile",
+      "description": "按公司系统识别码查询公司画像。",
+      "params": [
+        {"name": "company_id", "type": "number", "description": "公司系统识别码", "required": true}
+      ],
+      "examples": ["itjuzi-mcp company profile --company_id 42748923"]
+    },
+    {
+      "name": "get_company_funding_events",
+      "group": "company",
+      "cliMethod": "funding-events",
+      "description": "查询某家公司的融资历史。",
+      "params": [
+        {"name": "company_id", "type": "number", "description": "公司系统识别码", "required": true},
+        {"name": "page_size", "type": "number", "description": "分页大小", "required": false},
+        {"name": "cursor", "type": "string", "description": "上一页 next_cursor", "required": false}
+      ],
+      "examples": ["itjuzi-mcp company funding-events --company_id 42748923"]
+    },
+    {
+      "name": "search_company_investment_cases",
+      "group": "company",
+      "cliMethod": "investment-cases",
+      "description": "查询企业对外投资案例，支持按投资方标签、行业、公司和时间筛选。",
+      "params": [
+        {"name": "investor_company_ids", "type": "array", "description": "投资方公司 ID 列表", "required": false},
+        {"name": "investor_tag_ids", "type": "array", "description": "投资方公司标签 ID 列表", "required": false},
+        {"name": "investor_scope_ids", "type": "array", "description": "投资方一级行业 ID 列表", "required": false},
+        {"name": "target_scope_ids", "type": "array", "description": "被投方一级行业 ID 列表", "required": false},
+        {"name": "round_ids", "type": "array", "description": "轮次 ID 列表", "required": false},
+        {"name": "date_start", "type": "string", "description": "开始日期 YYYY-MM-DD", "required": false},
+        {"name": "date_end", "type": "string", "description": "结束日期 YYYY-MM-DD", "required": false},
+        {"name": "page_size", "type": "number", "description": "分页大小", "required": false}
+      ],
+      "examples": ["itjuzi-mcp company investment-cases --investor_tag_ids 14956 --page_size 20"]
+    },
+    {
+      "name": "search_events",
+      "group": "funding",
+      "cliMethod": "events",
+      "description": "查询融资、上市相关和并购事件。",
+      "params": [
+        {"name": "event_type", "type": "string", "description": "物理来源类型：invse 或 merger", "required": false},
+        {"name": "event_category", "type": "string", "description": "业务分类：investment、listing、merger", "required": false},
+        {"name": "date_start", "type": "string", "description": "开始日期 YYYY-MM-DD", "required": false},
+        {"name": "date_end", "type": "string", "description": "结束日期 YYYY-MM-DD", "required": false},
+        {"name": "tag_ids", "type": "array", "description": "标签 ID 列表", "required": false},
+        {"name": "location", "type": "string", "description": "地区类型：in 中国公司事件，out 海外公司事件", "required": false},
+        {"name": "round_ids", "type": "array", "description": "轮次 ID 列表", "required": false},
+        {"name": "page_size", "type": "number", "description": "分页大小", "required": false}
+      ],
+      "examples": ["itjuzi-mcp funding events --tag_ids 14956 --location in --date_start 2026-01-01"]
+    },
+    {
+      "name": "rank_companies_by_funding",
+      "group": "funding",
+      "cliMethod": "rank-companies",
+      "description": "按公司动态汇总融资事件金额并输出 TOP 排名。",
+      "params": [
+        {"name": "company_tag_ids", "type": "array", "description": "公司标签 ID 列表", "required": false},
+        {"name": "location", "type": "string", "description": "地区类型", "required": false},
+        {"name": "date_start", "type": "string", "description": "开始日期 YYYY-MM-DD", "required": false},
+        {"name": "date_end", "type": "string", "description": "结束日期 YYYY-MM-DD", "required": false},
+        {"name": "exclude_round_ids", "type": "array", "description": "排除轮次 ID 列表", "required": false},
+        {"name": "limit", "type": "number", "description": "返回数量", "required": false}
+      ],
+      "examples": ["itjuzi-mcp funding rank-companies --company_tag_ids 14956 --location in --limit 50"]
+    },
+    {
+      "name": "aggregate_funding_by_tags",
+      "group": "funding",
+      "cliMethod": "aggregate-by-tags",
+      "description": "按公司标签、时间段和地区聚合融资统计。",
+      "params": [
+        {"name": "tag_ids", "type": "array", "description": "标签 ID 列表", "required": false},
+        {"name": "date_ranges", "type": "json", "description": "时间段 JSON 数组", "required": true},
+        {"name": "regions", "type": "json", "description": "地区 JSON 数组", "required": true},
+        {"name": "event_category", "type": "string", "description": "业务分类", "required": false},
+        {"name": "location", "type": "string", "description": "全局地区类型", "required": false}
+      ],
+      "examples": ["itjuzi-mcp funding aggregate-by-tags --tag_ids 14956 --date_ranges '[{\"name\":\"2026\",\"date_start\":\"2026-01-01\",\"date_end\":\"2026-12-31\"}]' --regions '[{\"name\":\"全国\",\"location\":\"in\"}]'"]
+    },
+    {
+      "name": "search_investors",
+      "group": "investor",
+      "cliMethod": "search",
+      "description": "搜索投资机构，支持机构类型、FA、国资背景和政府引导基金筛选。",
+      "params": [
+        {"name": "keyword", "type": "string", "description": "机构关键词", "required": false},
+        {"name": "prop_ids", "type": "array", "description": "机构类型 ID 列表", "required": false},
+        {"name": "is_fa", "type": "boolean", "description": "是否 FA 机构", "required": false},
+        {"name": "is_state_owned", "type": "boolean", "description": "是否国资背景", "required": false},
+        {"name": "is_government_guidance_fund", "type": "boolean", "description": "是否政府引导基金", "required": false},
+        {"name": "page_size", "type": "number", "description": "分页大小", "required": false}
+      ],
+      "examples": ["itjuzi-mcp investor search --keyword 红杉"]
+    },
+    {
+      "name": "get_investor_profile",
+      "group": "investor",
+      "cliMethod": "profile",
+      "description": "按机构系统识别码查询机构详情。",
+      "params": [
+        {"name": "investor_id", "type": "number", "description": "机构系统识别码", "required": true}
+      ],
+      "examples": ["itjuzi-mcp investor profile --investor_id 1"]
+    },
+    {
+      "name": "search_investor_cases",
+      "group": "investor",
+      "cliMethod": "cases",
+      "description": "查询某机构投资案例。",
+      "params": [
+        {"name": "investor_id", "type": "number", "description": "机构系统识别码", "required": true},
+        {"name": "scope_ids", "type": "array", "description": "一级行业 ID 列表", "required": false},
+        {"name": "round_ids", "type": "array", "description": "轮次 ID 列表", "required": false},
+        {"name": "page_size", "type": "number", "description": "分页大小", "required": false}
+      ],
+      "examples": ["itjuzi-mcp investor cases --investor_id 1 --page_size 20"]
+    },
+    {
+      "name": "search_fa_cases",
+      "group": "fa",
+      "cliMethod": "cases",
+      "description": "查询结构化 FA 服务案例。",
+      "params": [
+        {"name": "fa_ids", "type": "array", "description": "FA 机构 ID 列表", "required": false},
+        {"name": "company_ids", "type": "array", "description": "公司 ID 列表", "required": false},
+        {"name": "scope_ids", "type": "array", "description": "一级行业 ID 列表", "required": false},
+        {"name": "round_ids", "type": "array", "description": "轮次 ID 列表", "required": false},
+        {"name": "date_start", "type": "string", "description": "开始日期 YYYY-MM-DD", "required": false},
+        {"name": "date_end", "type": "string", "description": "结束日期 YYYY-MM-DD", "required": false},
+        {"name": "page_size", "type": "number", "description": "分页大小", "required": false}
+      ],
+      "examples": ["itjuzi-mcp fa cases --scope_ids 1 --date_start 2025-01-01"]
+    },
+    {
+      "name": "get_lookup_options",
+      "group": "lookup",
+      "cliMethod": "options",
+      "description": "查询行业、轮次、省份、机构类型、公司资质等字典。",
+      "params": [
+        {"name": "lookup_type", "type": "string", "description": "字典类型，如 round、scope、investor_prop", "required": false}
+      ],
+      "examples": ["itjuzi-mcp lookup options --lookup_type round"]
+    },
+    {
+      "name": "search_tags",
+      "group": "tag",
+      "cliMethod": "search",
+      "description": "搜索赛道标签并获取标签 ID。",
+      "params": [
+        {"name": "keyword", "type": "string", "description": "标签关键词", "required": true},
+        {"name": "limit", "type": "number", "description": "返回数量", "required": false}
+      ],
+      "examples": ["itjuzi-mcp tag search --keyword 具身智能 --limit 10"]
+    }
+  ]
+}

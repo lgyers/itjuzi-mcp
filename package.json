@@ -1,0 +1,60 @@
+{
+  "name": "@itjuzi/mcp-cli",
+  "version": "0.1.0",
+  "description": "IT桔子 MCP CLI client for hosted streamable-http MCP service",
+  "type": "module",
+  "main": "dist/index.js",
+  "bin": {
+    "itjuzi-mcp": "dist/index.js"
+  },
+  "files": [
+    "dist/",
+    "README.md",
+    "LICENSE",
+    "CHANGELOG.md",
+    "mcp.json",
+    "docs/",
+    "examples/"
+  ],
+  "scripts": {
+    "build": "tsc && cp src/catalog.json dist/catalog.json",
+    "dev": "tsx src/index.ts",
+    "test": "vitest run",
+    "prepublishOnly": "npm run build && npm test"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "keywords": [
+    "itjuzi",
+    "mcp",
+    "mcp-client",
+    "streamable-http",
+    "venture-capital",
+    "private-market",
+    "investment-data"
+  ],
+  "author": "IT桔子",
+  "license": "MIT",
+  "homepage": "https://github.com/itjuzi/itjuzi-mcp#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/itjuzi/itjuzi-mcp.git"
+  },
+  "bugs": {
+    "url": "https://github.com/itjuzi/itjuzi-mcp/issues"
+  },
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  },
+  "dependencies": {
+    "commander": "^13.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "tsx": "^4.0.0",
+    "typescript": "^5.7.0",
+    "vitest": "^2.0.0"
+  }
+}
