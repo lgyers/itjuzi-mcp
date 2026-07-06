@@ -1,11 +1,12 @@
 # 公开工具
 
-当前 IT桔子 MCP 公开 14 个工具：
+当前 IT桔子 MCP 公开 15 个工具：
 
 ## 公司
 
-- `search_companies`：查询公司列表，支持标签、行业、地区、融资阶段和公司资质筛选。
+- `search_companies`：查询公司列表，支持公司关键词、标签、行业、地区、融资阶段和公司资质筛选。
 - `count_companies`：按公司筛选条件统计对外可见公司总数。
+- `resolve_companies`：批量把公司简称或工商全称解析为 `company_id`。
 - `get_company_profile`：按公司系统识别码查询公司画像。
 - `get_company_funding_events`：查询某家公司融资历史。
 - `search_company_investment_cases`：查询企业对外投资案例。
@@ -36,5 +37,6 @@
 ```bash
 itjuzi-mcp tools
 itjuzi-mcp company search --help
+itjuzi-mcp company resolve --names 智元机器人,月之暗面
 itjuzi-mcp raw search_tags --json '{"keyword":"具身智能","limit":10}'
 ```

@@ -4,7 +4,7 @@
       "group": "company",
       "name_zh": "公司",
       "description": "公司搜索、公司画像、融资历史和企业对外投资",
-      "tool_count": 5
+      "tool_count": 6
     },
     {
       "group": "funding",
@@ -42,8 +42,9 @@
       "name": "search_companies",
       "group": "company",
       "cliMethod": "search",
-      "description": "查询公司列表，支持标签、行业、地区、融资阶段、千里马、独角兽和公司资质筛选。",
+      "description": "查询公司列表，支持公司关键词、标签、行业、地区、融资阶段、千里马、独角兽和公司资质筛选。",
       "params": [
+        {"name": "keyword", "type": "string", "description": "公司简称或工商全称关键词", "required": false},
         {"name": "tag_ids", "type": "array", "description": "标签 ID 列表，例如 14956", "required": false},
         {"name": "tag_match_mode", "type": "string", "description": "标签匹配方式：union 或 intersection", "required": false},
         {"name": "location", "type": "string", "description": "地区类型：in 中国公司，out 海外公司", "required": false},
@@ -54,7 +55,7 @@
         {"name": "page_size", "type": "number", "description": "分页大小", "required": false},
         {"name": "cursor", "type": "string", "description": "上一页 next_cursor", "required": false}
       ],
-      "examples": ["itjuzi-mcp company search --tag_ids 14956 --location in --page_size 20"]
+      "examples": ["itjuzi-mcp company search --keyword 智元机器人", "itjuzi-mcp company search --tag_ids 14956 --location in --page_size 20"]
     },
     {
       "name": "count_companies",
@@ -62,6 +63,7 @@
       "cliMethod": "count",
       "description": "按公司筛选条件统计对外可见公司数量。",
       "params": [
+        {"name": "keyword", "type": "string", "description": "公司简称或工商全称关键词", "required": false},
         {"name": "tag_ids", "type": "array", "description": "标签 ID 列表", "required": false},
         {"name": "location", "type": "string", "description": "地区类型：in 中国公司，out 海外公司", "required": false},
         {"name": "scope_ids", "type": "array", "description": "一级行业 ID 列表", "required": false},
@@ -70,6 +72,18 @@
         {"name": "cities", "type": "array", "description": "城市列表", "required": false}
       ],
       "examples": ["itjuzi-mcp company count --tag_ids 14956 --location in"]
+    },
+    {
+      "name": "resolve_companies",
+      "group": "company",
+      "cliMethod": "resolve",
+      "description": "批量把公司简称或工商全称解析为 IT桔子 company_id。",
+      "params": [
+        {"name": "names", "type": "array", "description": "公司名称列表，逗号分隔，单次最多 50 个", "required": true},
+        {"name": "limit_per_name", "type": "number", "description": "每个名称返回候选数量，默认 5，最大 20", "required": false},
+        {"name": "exact_only", "type": "boolean", "description": "是否只做精确匹配", "required": false}
+      ],
+      "examples": ["itjuzi-mcp company resolve --names 智元机器人,月之暗面"]
     },
     {
       "name": "get_company_profile",
