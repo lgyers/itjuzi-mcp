@@ -1,6 +1,6 @@
 # IT桔子 MCP
 
-IT桔子 MCP 是一个远程托管的 `streamable-http` MCP 服务，支持在 Worker Body、Claude、Cursor、Cherry Studio 等 MCP 客户端中通过自然语言查询一级市场结构化数据。
+IT桔子 MCP 是一个远程托管的 `streamable-http` MCP 服务，支持在 WorkBuddy、Claude、Cursor、Cherry Studio 等 MCP 客户端中通过自然语言查询一级市场结构化数据。
 
 本项目是 IT桔子 MCP 的公开客户端项目，包含 npm CLI、公开工具目录、接入文档和使用案例。服务端由 IT桔子托管运行，后端源码、数据库结构、同步任务和专有数据集不在本仓库开源。
 
@@ -51,7 +51,7 @@ itjuzi-mcp doctor
 生成 MCP 客户端配置：
 
 ```bash
-itjuzi-mcp print-config --client worker-body
+itjuzi-mcp print-config --client workbuddy
 ```
 
 查看自然语言案例：

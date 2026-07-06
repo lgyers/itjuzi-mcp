@@ -27,14 +27,14 @@ const program = new Command()
     `
 推荐使用方式
 
-  1. 在 Worker Body、Claude、Cursor 等 MCP 客户端中配置远程服务后，用自然语言提问。
+  1. 在 WorkBuddy、Claude、Cursor 等 MCP 客户端中配置远程服务后，用自然语言提问。
   2. 使用 CLI 生成配置、检查连接、查看工具说明和复现单个工具调用。
 
 快速开始
 
   itjuzi-mcp init --api-key YOUR_API_KEY
   itjuzi-mcp doctor
-  itjuzi-mcp print-config --client worker-body
+  itjuzi-mcp print-config --client workbuddy
   itjuzi-mcp examples
   itjuzi-mcp tools
 `,

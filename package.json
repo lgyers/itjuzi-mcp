@@ -36,13 +36,13 @@
   ],
   "author": "IT桔子",
   "license": "MIT",
-  "homepage": "https://github.com/itjuzi/itjuzi-mcp#readme",
+  "homepage": "https://github.com/lgyers/itjuzi-mcp#readme",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/itjuzi/itjuzi-mcp.git"
+    "url": "git+https://github.com/lgyers/itjuzi-mcp.git"
   },
   "bugs": {
-    "url": "https://github.com/itjuzi/itjuzi-mcp/issues"
+    "url": "https://github.com/lgyers/itjuzi-mcp/issues"
   },
   "publishConfig": {
     "access": "public",

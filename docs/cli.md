@@ -5,7 +5,7 @@
 ```bash
 itjuzi-mcp init --api-key YOUR_API_KEY
 itjuzi-mcp doctor
-itjuzi-mcp print-config --client worker-body
+itjuzi-mcp print-config --client workbuddy
 itjuzi-mcp tools
 itjuzi-mcp examples
 ```
