@@ -5,7 +5,7 @@ export function registerPrintConfigCommand(program: Command): void {
   program
     .command("print-config")
     .description("输出可复制到 MCP 客户端的配置")
-    .option("--client <name>", "客户端名称：worker-body、claude、cursor、cherry-studio", "worker-body")
+    .option("--client <name>", "客户端名称：workbuddy、claude、cursor、cherry-studio", "workbuddy")
     .action((opts: { client: string }) => {
       const stored = loadConfig() || {};
       const url = stored.url || DEFAULT_MCP_URL;
@@ -23,7 +23,7 @@ export function registerPrintConfigCommand(program: Command): void {
         },
       };
       console.log(JSON.stringify(config, null, 2));
-      if (!["worker-body", "claude", "cursor", "cherry-studio"].includes(opts.client)) {
+      if (!["workbuddy", "claude", "cursor", "cherry-studio"].includes(opts.client)) {
         console.error(`提示：未知客户端 ${opts.client}，已输出通用 MCP 配置。`);
       }
     });
