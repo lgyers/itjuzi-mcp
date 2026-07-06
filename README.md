@@ -33,7 +33,7 @@ IT桔子 MCP 是一个远程托管的 `streamable-http` MCP 服务，支持在 W
 ## 安装 CLI
 
 ```bash
-npm install -g @itjuzi/mcp-cli
+npm install -g itjuzi-mcp
 ```
 
 配置 API Key：
