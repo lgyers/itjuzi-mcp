@@ -1,0 +1,12 @@
+{
+  "mcpServers": {
+    "itjuzi-mcp": {
+      "url": "https://mcp.itjuzi.com/mcp",
+      "transport": "streamable-http",
+      "headers": {
+        "Authorization": "Bearer YOUR_ITJUZI_MCP_API_KEY"
+      },
+      "disabled": false
+    }
+  }
+}

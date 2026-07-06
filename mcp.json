@@ -1,0 +1,16 @@
+{
+  "name": "itjuzi-mcp",
+  "displayName": "IT桔子 MCP",
+  "description": "Hosted streamable-http MCP server for querying IT桔子 primary market structured data.",
+  "transport": "streamable-http",
+  "url": "https://mcp.itjuzi.com/mcp",
+  "authentication": {
+    "type": "bearer",
+    "header": "Authorization",
+    "format": "Bearer ${ITJUZI_MCP_API_KEY}"
+  },
+  "homepage": "https://www.itjuzi.com",
+  "license": "MIT",
+  "runtime": "hosted",
+  "localInstallRequired": false
+}
