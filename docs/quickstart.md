@@ -20,7 +20,7 @@
 ## CLI 配置
 
 ```bash
-npm install -g @itjuzi/mcp-cli
+npm install -g itjuzi-mcp
 itjuzi-mcp init --api-key YOUR_API_KEY
 itjuzi-mcp doctor
 ```
