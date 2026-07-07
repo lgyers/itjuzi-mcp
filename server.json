@@ -1,0 +1,33 @@
+{
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+  "title": "IT桔子 MCP",
+  "name": "io.github.lgyers/itjuzi-mcp",
+  "description": "Hosted MCP for IT桔子 primary market company, funding, investor and sector data.",
+  "repository": {
+    "url": "https://github.com/lgyers/itjuzi-mcp",
+    "source": "github"
+  },
+  "websiteUrl": "https://www.itjuzi.com",
+  "version": "0.1.0",
+  "remotes": [
+    {
+      "type": "streamable-http",
+      "url": "https://mcp.itjuzi.com/mcp",
+      "headers": [
+        {
+          "name": "Authorization",
+          "description": "IT桔子 MCP API Key.",
+          "value": "Bearer {api_key}",
+          "variables": {
+            "api_key": {
+              "description": "IT桔子 MCP API Key provided after activation.",
+              "isRequired": true,
+              "format": "string",
+              "isSecret": true
+            }
+          }
+        }
+      ]
+    }
+  ]
+}
