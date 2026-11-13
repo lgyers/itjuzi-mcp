@@ -11,7 +11,6 @@ export function registerDoctorCommand(program: Command): void {
       const verbose = Boolean(program.opts().verbose);
       const config = resolveConfig(opts.auth);
       console.log(`MCP endpoint: ${config.url}`);
-      console.log(`Tool call endpoint: ${config.coreUrl}`);
       await verifyEndpoint(config, verbose);
       console.log("endpoint 检查通过");
       if (opts.auth) {
