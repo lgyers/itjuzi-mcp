@@ -5,8 +5,6 @@ ROOT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 OUTPUT_DIR="$ROOT_DIR/dist"
 OUTPUT_FILE="$OUTPUT_DIR/itjuzi-mcp-workbuddy.zip"
 
-node "$ROOT_DIR/scripts/sync-workbuddy-skills.mjs"
-
 node -e '
   const fs = require("fs");
   const path = require("path");
