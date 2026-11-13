@@ -1,6 +1,6 @@
 {
   "name": "itjuzi-mcp",
-  "version": "0.1.0",
+  "version": "0.1.2",
   "description": "IT桔子 MCP CLI client for hosted streamable-http MCP service",
   "type": "module",
   "main": "dist/index.js",

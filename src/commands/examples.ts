@@ -21,6 +21,22 @@ const EXAMPLES = [
     question: "查询国内自动驾驶公司融资总额 TOP50。",
     tools: "search_tags -> rank_companies_by_funding",
   },
+  {
+    question: "2025 年国内机器人赛道有哪些公司倒闭了？按关闭原因归类。",
+    tools: "search_tags -> count_closed_companies -> search_closed_companies",
+  },
+  {
+    question: "去年关闭的人工智能公司里，最后一轮融资到关闭平均隔了多久？",
+    tools: "search_tags -> analyze_closed_company_cohort",
+  },
+  {
+    question: "字节跳动现在有哪些在职的投资负责人？",
+    tools: "search_people",
+  },
+  {
+    question: "今天有哪些创投电报提到具身智能？",
+    tools: "get_lookup_options -> search_newsletters",
+  },
 ];
 
 export function registerExamplesCommand(program: Command): void {

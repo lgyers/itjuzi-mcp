@@ -99,7 +99,11 @@ itjuzi-mcp company resolve --names 智元机器人,月之暗面
 itjuzi-mcp company search --keyword 智元机器人
 itjuzi-mcp company search --tag_ids 14956 --location in --page_size 20
 itjuzi-mcp company investment-cases --investor_tag_ids 14956 --page_size 20
+itjuzi-mcp company closed-search --tag_ids 14956 --close_date_start 2026-01-01
+itjuzi-mcp person search --keyword 张一鸣 --is_on_job true
+itjuzi-mcp person cases --person_id 12 --page_size 20
 itjuzi-mcp funding events --tag_ids 14956 --location in --date_start 2026-01-01
+itjuzi-mcp news search --keyword 机器人 --date_start 2026-11-01
 itjuzi-mcp lookup options --lookup_type round
 ```
 
@@ -111,7 +115,7 @@ itjuzi-mcp raw search_tags --json '{"keyword":"具身智能","limit":10}'
 
 ## 当前边界
 
-- 第一版 CLI 覆盖当前 15 个公开 MCP 工具。
+- 第一版 CLI 覆盖当前 22 个公开 MCP 工具。
 - 第一版 CLI 不要求公开服务端源码，也不包含数据库逻辑。
 - 第一版支持通过 `resolve_companies` 批量把公司名称解析为 `company_id`；部分服务端工具仍需要系统识别码或标签 ID，可以先用 `resolve_companies`、`search_tags`、`search_investors`、`get_lookup_options` 等工具查询。
 - IT桔子 MCP 适用于人在 AI 客户端中进行投研问答，不支持批量导出、系统入库或平台分发。

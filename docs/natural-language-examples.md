@@ -8,5 +8,9 @@
 | 红杉中国最近一年投过哪些人工智能公司？ | `search_investors -> search_investor_cases` |
 | 国内自动驾驶公司融资总额 TOP50 是哪些？ | `search_tags -> rank_companies_by_funding` |
 | 查询某个 FA 机构最近服务过哪些融资案例。 | `search_investors -> search_fa_cases` |
+| 2025 年国内机器人赛道有哪些公司倒闭了？按关闭原因归类。 | `search_tags -> count_closed_companies -> search_closed_companies` |
+| 去年关闭的人工智能公司里，最后一轮融资到关闭平均隔了多久？ | `search_tags -> analyze_closed_company_cohort` |
+| 字节跳动现在有哪些在职的投资负责人？ | `search_people` |
+| 今天有哪些创投电报提到具身智能？ | `get_lookup_options -> search_newsletters` |
 
 说明：自然语言接入时，由 MCP 客户端中的 Agent 自动选择和组合工具。CLI 的 raw 调用主要用于复现和排查。

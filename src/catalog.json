@@ -3,8 +3,8 @@
     {
       "group": "company",
       "name_zh": "公司",
-      "description": "公司搜索、公司画像、融资历史和企业对外投资",
-      "tool_count": 6
+      "description": "公司搜索、公司画像、融资历史、企业对外投资和关闭公司库",
+      "tool_count": 9
     },
     {
       "group": "funding",
@@ -16,6 +16,12 @@
       "group": "investor",
       "name_zh": "机构",
       "description": "投资机构搜索、机构画像和机构投资案例",
+      "tool_count": 3
+    },
+    {
+      "group": "person",
+      "name_zh": "人物",
+      "description": "人物画像搜索、人物详情和人物投资案例",
       "tool_count": 3
     },
     {
@@ -34,6 +40,12 @@
       "group": "tag",
       "name_zh": "标签",
       "description": "搜索赛道标签并获取标签 ID",
+      "tool_count": 1
+    },
+    {
+      "group": "news",
+      "name_zh": "快讯",
+      "description": "快讯、创投电报查询",
       "tool_count": 1
     }
   ],
@@ -84,6 +96,91 @@
         {"name": "exact_only", "type": "boolean", "description": "是否只做精确匹配", "required": false}
       ],
       "examples": ["itjuzi-mcp company resolve --names 智元机器人,月之暗面"]
+    },
+    {
+      "name": "search_closed_companies",
+      "group": "company",
+      "cliMethod": "closed-search",
+      "description": "分页查询死亡/关闭公司库，支持关闭日期和关闭原因筛选，返回公司画像、最新融资摘要和关闭原因。",
+      "params": [
+        {"name": "keyword", "type": "string", "description": "公司简称或工商全称关键词", "required": false},
+        {"name": "tag_ids", "type": "array", "description": "标签 ID 列表", "required": false},
+        {"name": "tag_match_mode", "type": "string", "description": "标签匹配方式：union 或 intersection", "required": false},
+        {"name": "location", "type": "string", "description": "地区类型：in 中国公司，out 海外公司", "required": false},
+        {"name": "scope_ids", "type": "array", "description": "一级行业 ID 列表", "required": false},
+        {"name": "sub_scope_ids", "type": "array", "description": "二级行业 ID 列表", "required": false},
+        {"name": "provinces", "type": "array", "description": "省份列表", "required": false},
+        {"name": "cities", "type": "array", "description": "城市列表", "required": false},
+        {"name": "born_year_start", "type": "number", "description": "成立年份起始", "required": false},
+        {"name": "born_year_end", "type": "number", "description": "成立年份截止", "required": false},
+        {"name": "fund_status_ids", "type": "array", "description": "发展阶段 ID 列表", "required": false},
+        {"name": "is_horse_club", "type": "boolean", "description": "是否千里马", "required": false},
+        {"name": "is_unicorn", "type": "boolean", "description": "是否独角兽", "required": false},
+        {"name": "qualification_type_ids", "type": "array", "description": "公司资质类型 ID 列表", "required": false},
+        {"name": "close_date_start", "type": "string", "description": "关闭日期起始 YYYY-MM-DD", "required": false},
+        {"name": "close_date_end", "type": "string", "description": "关闭日期截止 YYYY-MM-DD", "required": false},
+        {"name": "closure_type_ids", "type": "array", "description": "关闭原因 ID 列表", "required": false},
+        {"name": "closure_parent_type_ids", "type": "array", "description": "一级关闭原因 ID 列表", "required": false},
+        {"name": "page_size", "type": "number", "description": "分页大小", "required": false},
+        {"name": "cursor", "type": "string", "description": "上一页 next_cursor", "required": false}
+      ],
+      "examples": ["itjuzi-mcp company closed-search --tag_ids 14956 --close_date_start 2026-01-01"]
+    },
+    {
+      "name": "count_closed_companies",
+      "group": "company",
+      "cliMethod": "closed-count",
+      "description": "按死亡/关闭公司筛选条件统计关闭公司数量。",
+      "params": [
+        {"name": "keyword", "type": "string", "description": "公司简称或工商全称关键词", "required": false},
+        {"name": "tag_ids", "type": "array", "description": "标签 ID 列表", "required": false},
+        {"name": "tag_match_mode", "type": "string", "description": "标签匹配方式：union 或 intersection", "required": false},
+        {"name": "location", "type": "string", "description": "地区类型：in 中国公司，out 海外公司", "required": false},
+        {"name": "scope_ids", "type": "array", "description": "一级行业 ID 列表", "required": false},
+        {"name": "sub_scope_ids", "type": "array", "description": "二级行业 ID 列表", "required": false},
+        {"name": "provinces", "type": "array", "description": "省份列表", "required": false},
+        {"name": "cities", "type": "array", "description": "城市列表", "required": false},
+        {"name": "born_year_start", "type": "number", "description": "成立年份起始", "required": false},
+        {"name": "born_year_end", "type": "number", "description": "成立年份截止", "required": false},
+        {"name": "fund_status_ids", "type": "array", "description": "发展阶段 ID 列表", "required": false},
+        {"name": "is_horse_club", "type": "boolean", "description": "是否千里马", "required": false},
+        {"name": "is_unicorn", "type": "boolean", "description": "是否独角兽", "required": false},
+        {"name": "qualification_type_ids", "type": "array", "description": "公司资质类型 ID 列表", "required": false},
+        {"name": "close_date_start", "type": "string", "description": "关闭日期起始 YYYY-MM-DD", "required": false},
+        {"name": "close_date_end", "type": "string", "description": "关闭日期截止 YYYY-MM-DD", "required": false},
+        {"name": "closure_type_ids", "type": "array", "description": "关闭原因 ID 列表", "required": false},
+        {"name": "closure_parent_type_ids", "type": "array", "description": "一级关闭原因 ID 列表", "required": false}
+      ],
+      "examples": ["itjuzi-mcp company closed-count --scope_ids 1 --close_date_start 2026-01-01"]
+    },
+    {
+      "name": "analyze_closed_company_cohort",
+      "group": "company",
+      "cliMethod": "closure-cohort",
+      "description": "按关闭公司筛选条件聚合融资历史，返回样本数、披露融资总额、关闭前最后融资至关闭间隔、轮次分布、关闭原因分布和代表案例。",
+      "params": [
+        {"name": "keyword", "type": "string", "description": "公司简称或工商全称关键词", "required": false},
+        {"name": "tag_ids", "type": "array", "description": "标签 ID 列表", "required": false},
+        {"name": "tag_match_mode", "type": "string", "description": "标签匹配方式：union 或 intersection", "required": false},
+        {"name": "location", "type": "string", "description": "地区类型：in 中国公司，out 海外公司", "required": false},
+        {"name": "scope_ids", "type": "array", "description": "一级行业 ID 列表", "required": false},
+        {"name": "sub_scope_ids", "type": "array", "description": "二级行业 ID 列表", "required": false},
+        {"name": "provinces", "type": "array", "description": "省份列表", "required": false},
+        {"name": "cities", "type": "array", "description": "城市列表", "required": false},
+        {"name": "born_year_start", "type": "number", "description": "成立年份起始", "required": false},
+        {"name": "born_year_end", "type": "number", "description": "成立年份截止", "required": false},
+        {"name": "fund_status_ids", "type": "array", "description": "发展阶段 ID 列表", "required": false},
+        {"name": "close_date_start", "type": "string", "description": "关闭日期起始 YYYY-MM-DD", "required": false},
+        {"name": "close_date_end", "type": "string", "description": "关闭日期截止 YYYY-MM-DD", "required": false},
+        {"name": "closure_type_ids", "type": "array", "description": "关闭原因 ID 列表", "required": false},
+        {"name": "closure_parent_type_ids", "type": "array", "description": "一级关闭原因 ID 列表", "required": false},
+        {"name": "last_round_ids", "type": "array", "description": "关闭前最后融资轮次 ID 列表", "required": false},
+        {"name": "funded_only", "type": "boolean", "description": "是否只统计有融资记录的样本", "required": false},
+        {"name": "last_funding_gap_days_min", "type": "number", "description": "最后融资至关闭间隔下限（天）", "required": false},
+        {"name": "last_funding_gap_days_max", "type": "number", "description": "最后融资至关闭间隔上限（天）", "required": false},
+        {"name": "representative_limit", "type": "number", "description": "代表案例数量，默认 10", "required": false}
+      ],
+      "examples": ["itjuzi-mcp company closure-cohort --tag_ids 14956 --funded_only true --representative_limit 10"]
     },
     {
       "name": "get_company_profile",
@@ -209,6 +306,56 @@
       "examples": ["itjuzi-mcp investor cases --investor_id 1 --page_size 20"]
     },
     {
+      "name": "search_people",
+      "group": "person",
+      "cliMethod": "search",
+      "description": "按姓名、在职状态、当前公司、当前机构、教育经历或过往工作经历搜索人物画像。",
+      "params": [
+        {"name": "keyword", "type": "string", "description": "人物姓名关键词", "required": false},
+        {"name": "location", "type": "string", "description": "地区类型：in 中国人物，out 海外人物", "required": false},
+        {"name": "provinces", "type": "array", "description": "省份列表", "required": false},
+        {"name": "cities", "type": "array", "description": "城市列表", "required": false},
+        {"name": "is_on_job", "type": "boolean", "description": "是否在职", "required": false},
+        {"name": "person_type_keyword", "type": "string", "description": "人物类型关键词", "required": false},
+        {"name": "current_company_keyword", "type": "string", "description": "当前任职公司关键词", "required": false},
+        {"name": "current_investor_keyword", "type": "string", "description": "当前任职投资机构关键词", "required": false},
+        {"name": "education_keyword", "type": "string", "description": "教育经历关键词", "required": false},
+        {"name": "ever_job_keyword", "type": "string", "description": "过往工作经历关键词", "required": false},
+        {"name": "page_size", "type": "number", "description": "分页大小", "required": false},
+        {"name": "cursor", "type": "string", "description": "上一页 next_cursor", "required": false}
+      ],
+      "examples": ["itjuzi-mcp person search --keyword 张一鸣 --is_on_job true"]
+    },
+    {
+      "name": "get_person_profile",
+      "group": "person",
+      "cliMethod": "profile",
+      "description": "按人物 ID 查询人物画像，包括当前职位、在职公司、教育经历和过往工作经历。",
+      "params": [
+        {"name": "person_id", "type": "number", "description": "人物系统识别码", "required": true}
+      ],
+      "examples": ["itjuzi-mcp person profile --person_id 12"]
+    },
+    {
+      "name": "search_person_investment_cases",
+      "group": "person",
+      "cliMethod": "cases",
+      "description": "按人物 ID 或姓名查询人物个人参与的投资案例，可按被投公司标签、行业和轮次筛选。",
+      "params": [
+        {"name": "person_id", "type": "number", "description": "人物系统识别码", "required": false},
+        {"name": "person_keyword", "type": "string", "description": "人物姓名关键词", "required": false},
+        {"name": "scope_ids", "type": "array", "description": "被投方一级行业 ID 列表", "required": false},
+        {"name": "sub_scope_ids", "type": "array", "description": "被投方二级行业 ID 列表", "required": false},
+        {"name": "round_ids", "type": "array", "description": "轮次 ID 列表", "required": false},
+        {"name": "company_tag_ids", "type": "array", "description": "被投公司标签 ID 列表", "required": false},
+        {"name": "company_tag_match_mode", "type": "string", "description": "标签匹配方式：union 或 intersection", "required": false},
+        {"name": "is_underwater", "type": "boolean", "description": "是否只看未披露水下事件", "required": false},
+        {"name": "page_size", "type": "number", "description": "分页大小", "required": false},
+        {"name": "cursor", "type": "string", "description": "上一页 next_cursor", "required": false}
+      ],
+      "examples": ["itjuzi-mcp person cases --person_id 12 --page_size 20"]
+    },
+    {
       "name": "search_fa_cases",
       "group": "fa",
       "cliMethod": "cases",
@@ -244,6 +391,21 @@
         {"name": "limit", "type": "number", "description": "返回数量", "required": false}
       ],
       "examples": ["itjuzi-mcp tag search --keyword 具身智能 --limit 10"]
+    },
+    {
+      "name": "search_newsletters",
+      "group": "news",
+      "cliMethod": "search",
+      "description": "按快讯类型、标题/正文关键词和发布时间分页查询快讯、创投电报，默认按发布时间倒序。",
+      "params": [
+        {"name": "type_ids", "type": "array", "description": "快讯类型 ID 列表，可用 lookup options --lookup_type newsletter_type 获取", "required": false},
+        {"name": "keyword", "type": "string", "description": "标题或正文关键词", "required": false},
+        {"name": "date_start", "type": "string", "description": "开始日期 YYYY-MM-DD", "required": false},
+        {"name": "date_end", "type": "string", "description": "结束日期 YYYY-MM-DD", "required": false},
+        {"name": "page_size", "type": "number", "description": "分页大小", "required": false},
+        {"name": "cursor", "type": "string", "description": "上一页 next_cursor", "required": false}
+      ],
+      "examples": ["itjuzi-mcp news search --keyword 机器人 --date_start 2026-11-01"]
     }
   ]
 }

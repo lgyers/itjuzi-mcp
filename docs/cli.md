@@ -13,12 +13,14 @@ itjuzi-mcp examples
 ## 业务分组
 
 ```text
-company   公司搜索、公司画像、融资历史和企业对外投资
+company   公司搜索、公司画像、融资历史、企业对外投资和关闭公司库
 funding   融资事件、融资排名和赛道融资统计
 investor  投资机构搜索、机构画像和机构投资案例
+person    人物画像搜索、人物详情和人物投资案例
 fa        结构化 FA 服务案例
 lookup    字典
 tag       标签
+news      快讯、创投电报
 raw       原始工具调用
 ```
 
