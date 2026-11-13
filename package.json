@@ -19,6 +19,7 @@
   "scripts": {
     "build": "tsc && cp src/catalog.json dist/catalog.json",
     "dev": "tsx src/index.ts",
+    "package:workbuddy": "bash scripts/package-workbuddy.sh",
     "test": "vitest run",
     "prepublishOnly": "npm run build && npm test"
   },

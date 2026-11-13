@@ -1,0 +1,23 @@
+{
+  "name": "IT桔子",
+  "name_zh": "IT桔子",
+  "name_en": "ITJuzi",
+  "description": "Query ITJuzi primary-market structured data for company, funding, investor, and industry-tag research.",
+  "description_zh": "通过 IT桔子 MCP 查询公司、融资事件、投资机构、赛道标签等一级市场结构化数据，适合投研问答和行业分析。",
+  "description_en": "Query ITJuzi primary-market structured data for company, funding, investor, and industry-tag research.",
+  "version": "0.1.2",
+  "source": "itjuzi-mcp",
+  "type": "mcp",
+  "auth_mode": "token",
+  "minWorkbuddyVersion": "4.24.0",
+  "examples_zh": [
+    "北京、上海、深圳 2026 年机器人赛道融资总额和事件数对比。",
+    "红杉中国最近一年投过哪些人工智能公司？",
+    "具身智能标签下，中国公司中哪些已经有对外投资记录，并列出各家的对外投资清单。"
+  ],
+  "examples_en": [
+    "Compare robotics funding totals and deal counts in Beijing, Shanghai, and Shenzhen in 2026.",
+    "Which AI companies has Sequoia China invested in over the past year?",
+    "List Chinese companies under the embodied AI tag that have outbound investment records, along with their investment cases."
+  ]
+}
