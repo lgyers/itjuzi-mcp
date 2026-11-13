@@ -127,7 +127,6 @@ itjuzi-mcp raw search_tags --json '{"keyword":"具身智能","limit":10}'
 - [公开工具](docs/tools.md)
 - [自然语言案例](docs/natural-language-examples.md)
 - [故障排查](docs/troubleshooting.md)
-- [价格权益](docs/pricing.md)
 
 ## License
 
